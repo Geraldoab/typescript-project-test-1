@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "type": "module",
     "typescript": "^7.0.2"
   }
 }
