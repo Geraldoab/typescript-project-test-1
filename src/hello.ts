@@ -1,4 +1,5 @@
 import { type Shape, type Circle } from "./shape";
+import { Square } from "./Math";
 
 function greet(name: string) : string {
     return `Hello, ${name} 2`;
@@ -94,3 +95,35 @@ const newColoredRectangle: ColoredRectangle = {
     color: "red"
 }
 console.log(newColoredRectangle.color);
+
+// Union | (OR)
+function printStatusCode(code: string | number) {
+    console.log(`My status code is ${code}`);
+}
+
+printStatusCode(503);
+
+// Return type
+function getTime():number {
+    return new Date().getTime();
+}
+
+console.log(getTime());
+
+// Optional Parameters || -> means to use the default value when c is null
+function Add(a: number, b: number, c?: number) : number{
+    return a + b + (c || 0);
+}
+
+console.log(Add(1, 2));
+
+function pow(value: number, exponent: number = 10) {
+    return value ** exponent;
+}
+
+console.log(pow(2));
+
+
+const s1: Square = new Square(20)
+
+console.log(s1.toString());
