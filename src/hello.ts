@@ -1,5 +1,7 @@
 import { type Shape, type Circle } from "./shape";
 import { Square } from "./Math";
+import { createPair } from "./BasicGenerics";
+import { NamedValue } from "./NamedValue"
 
 function greet(name: string) : string {
     return `Hello, ${name} 2`;
@@ -44,7 +46,7 @@ console.log(tupleList[0]);
 
 
 // TypeScript Object Types
-const car: {type: string, model: string, year: number, mileage?:number } = {
+const car: { type: string, model: string, year: number, mileage?:number } = {
     type: "Toyota",
     model: "Corolla",
     year: 2009
@@ -117,7 +119,7 @@ function Add(a: number, b: number, c?: number) : number{
 
 console.log(Add(1, 2));
 
-function pow(value: number, exponent: number = 10) {
+function pow(value: number, exponent: number = 10) : number {
     return value ** exponent;
 }
 
@@ -127,3 +129,21 @@ console.log(pow(2));
 const s1: Square = new Square(20)
 
 console.log(s1.toString());
+
+// Void return
+function printMessage(message: string) : void {
+    console.log(message);
+}
+
+// Call generic createPair function
+console.log(createPair<string, number>('Test', 42));
+
+// Using a generic class
+function printGenericValueByName(item: NamedValue<string>) {
+    console.log(item.toString());
+}
+
+const newItem: NamedValue<string> = new NamedValue("test");
+newItem.setValue("abc");
+
+printGenericValueByName(newItem);
