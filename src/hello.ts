@@ -224,7 +224,7 @@ printYardSize(home); // Prints 'No yard'
 /*
   Nullish Coalescing
 
-  Nullish coalescing is another Javascript feature that also works well with Typescript's null handling.
+  Nullish coalescing is another Javascript feature that also works well with Typescript's null handling..
 */
 
 function printMileage(mileage: number | null | undefined) {
