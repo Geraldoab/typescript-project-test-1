@@ -187,3 +187,49 @@ const person: Readonly<Person> = {
 };
 
 //person.name = 'Israel';
+
+// Typescript Null & Undefined
+let value: string | undefined | null = null;
+value = 'Hello';
+value = undefined;
+
+/* 
+  Optional Chaining
+
+  Optional chaining is a Javascript feature that works well with Typescript's null handling.
+*/
+
+interface House {
+  sqft: number;
+  yard?: {
+    sqft: number;
+  };
+}
+
+function printYardSize(house: House) {
+  const yardSize = house.yard?.sqft;
+  if (yardSize === undefined) {
+    console.log('No yard');
+  } else {
+    console.log(`Yard is ${yardSize} sqft`);
+  }
+}
+
+let home: House = {
+  sqft: 500,
+};
+
+printYardSize(home); // Prints 'No yard'
+
+/*
+  Nullish Coalescing
+
+  Nullish coalescing is another Javascript feature that also works well with Typescript's null handling.
+*/
+
+function printMileage(mileage: number | null | undefined) {
+  console.log(`Mileage: ${mileage ?? 'Not availble'}`);
+}
+
+printMileage(null);
+printMileage(0);
