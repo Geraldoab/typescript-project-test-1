@@ -233,3 +233,42 @@ function printMileage(mileage: number | null | undefined) {
 
 printMileage(null);
 printMileage(0);
+
+/*
+   Typescript Async Programming
+*/
+
+interface WeatherForecast {
+  date: string;
+  temperatureC: number;
+  temperatureF: number;
+  summary: string;
+}
+
+async function fetchWeatherForecast(): Promise<WeatherForecast[]> {
+  const url = 'http://localhost:5048/WeatherForecast';
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data: WeatherForecast[] = await response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+(async () => {
+  try {
+    const apiResponse = await fetchWeatherForecast();
+    console.log(apiResponse);
+  } catch (error) {
+    console.error('Failed to fetch weather:', error);
+  }
+})();
